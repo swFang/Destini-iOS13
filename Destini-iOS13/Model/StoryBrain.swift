@@ -8,4 +8,31 @@
 
 import Foundation
 
+struct StoryBrain {
+    
+    let storyPages = StoryPages()
+    var currentPage: Story
+    
+    init() {
+        currentPage = storyPages.StoryBook[0]
+    }
+    
+    mutating func choiceMade(choice: String) {
+        
+        var nextStoryIdx: Int
+        if (choice == "Choice1") {
+            nextStoryIdx = currentPage.choice1Destination
+        } else {
+            nextStoryIdx = currentPage.choice2Destination
+        }
+        self.currentPage = storyPages.StoryBook[nextStoryIdx]
+    }
+    
+    func getCurrentPage() -> Story {
+        return currentPage
+    }
+}
+
+
+
 
